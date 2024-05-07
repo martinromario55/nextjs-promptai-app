@@ -2,7 +2,7 @@
 import Profile from '@components/Profile'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
-import React, { useEffect, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 
 const ProfilePage = () => {
   const { data: session } = useSession()
@@ -38,13 +38,15 @@ const ProfilePage = () => {
     }
   }
   return (
-    <Profile
-      name="My"
-      desc="Welcome to your personalized profile page"
-      data={posts}
-      handleEdit={handleEdit}
-      handleDelete={handleDelete}
-    />
+    <Suspense>
+      <Profile
+        name="My"
+        desc="Welcome to your personalized profile page"
+        data={posts}
+        handleEdit={handleEdit}
+        handleDelete={handleDelete}
+      />
+    </Suspense>
   )
 }
 

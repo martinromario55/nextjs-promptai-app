@@ -2,7 +2,7 @@
 import Form from '@components/Form'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
-import React, { useState } from 'react'
+import React, { Suspense, useState } from 'react'
 
 const CreatePromptPage = () => {
   const router = useRouter()
@@ -40,13 +40,15 @@ const CreatePromptPage = () => {
     }
   }
   return (
-    <Form
-      type="Create"
-      post={post}
-      setPost={setPost}
-      submitting={submitting}
-      handleSubmit={createPrompt}
-    />
+    <Suspense>
+      <Form
+        type="Create"
+        post={post}
+        setPost={setPost}
+        submitting={submitting}
+        handleSubmit={createPrompt}
+      />
+    </Suspense>
   )
 }
 

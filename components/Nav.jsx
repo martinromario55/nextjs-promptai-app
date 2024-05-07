@@ -8,11 +8,18 @@ const Nav = () => {
   const { data: session } = useSession()
   const [providers, setProviders] = useState(null)
   const [toggleDropdown, settoggleDropdown] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   const setProvidersFunc = async () => {
-    const response = await getProviders()
+    try {
+      const response = await getProviders()
 
-    setProviders(response)
+      setProviders(response)
+    } catch (error) {
+      console.log('Error fetching providers', error)
+    } finally {
+      setLoading(false)
+    }
   }
 
   useEffect(() => {
@@ -20,6 +27,10 @@ const Nav = () => {
   }, [])
 
   // console.log('Session:', session)
+
+  if (loading) {
+    return <div>Loading...</div>
+  }
 
   return (
     <nav className="flex-between w-full mb-16 pt-3">

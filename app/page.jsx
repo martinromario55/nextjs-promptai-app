@@ -1,5 +1,5 @@
 import Feed from '@components/Feed'
-import React from 'react'
+import React, { Suspense } from 'react'
 
 const Home = () => {
   return (
@@ -17,7 +17,9 @@ const Home = () => {
       </p>
 
       {/* Feed Component */}
-      <Feed />
+      <Suspense>
+        <Feed />
+      </Suspense>
     </section>
   )
 }
