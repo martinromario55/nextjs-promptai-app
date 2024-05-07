@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react'
 const EditPromptPage = () => {
   const router = useRouter()
   const [submitting, setsubmitting] = useState(false)
-  const searchParams = useSearchParams()
+  const [searchParams] = useSearchParams()
   const promptId = searchParams.get('id')
 
   const [post, setPost] = useState({
