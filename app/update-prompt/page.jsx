@@ -55,13 +55,29 @@ const EditPromptPage = () => {
     }
   }
   return (
-    <Form
-      type="Edit"
-      post={post}
-      setPost={setPost}
-      submitting={submitting}
-      handleSubmit={UpdatePrompt}
-    />
+    // <Form
+    //   type="Edit"
+    //   post={post}
+    //   setPost={setPost}
+    //   submitting={submitting}
+    //   handleSubmit={UpdatePrompt}
+    // />
+
+    <div>
+      {promptId ? ( // Check if promptId exists before rendering the form
+        <Suspense fallback={<div>Loading prompt details...</div>}>
+          <Form
+            type="Edit"
+            post={post}
+            setPost={setPost}
+            submitting={submitting}
+            handleSubmit={UpdatePrompt}
+          />
+        </Suspense>
+      ) : (
+        <div>Prompt ID not found</div>
+      )}
+    </div>
   )
 }
 
