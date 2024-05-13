@@ -1,6 +1,6 @@
 'use client'
 import Form from '@components/Form'
-import { useRouter, useSearchParams, Suspense } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
 const EditPromptPage = () => {
@@ -55,15 +55,13 @@ const EditPromptPage = () => {
     }
   }
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Form
-        type="Edit"
-        post={post}
-        setPost={setPost}
-        submitting={submitting}
-        handleSubmit={UpdatePrompt}
-      />
-    </Suspense>
+    <Form
+      type="Edit"
+      post={post}
+      setPost={setPost}
+      submitting={submitting}
+      handleSubmit={UpdatePrompt}
+    />
   )
 }
 
