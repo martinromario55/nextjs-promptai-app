@@ -1,7 +1,7 @@
 'use client'
 import Form from '@components/Form'
-import { useRouter, useSearchParams } from 'next/navigation'
-import React, { Suspense, useEffect, useState } from 'react'
+import { useRouter, useSearchParams, Suspense } from 'next/navigation'
+import React, { useEffect, useState } from 'react'
 
 const EditPromptPage = () => {
   const router = useRouter()
